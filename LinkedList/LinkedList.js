@@ -9,7 +9,7 @@ export default class LinkedList {
   prepend(value) {
     const newNode = new LinkedListNode(value, this.head);
 
-    newNode.next = this.head;
+    // newNode.next = this.head;
     this.head = newNode;
 
     if (!this.tail) {
@@ -19,35 +19,55 @@ export default class LinkedList {
   }
 
   append(value) {
-    const newNode = new LinkedListNode(value, this.head);
+    const newNode = new LinkedListNode(value);
 
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
+
+      return this;
     }
 
     this.tail.next = newNode;
     this.tail = newNode;
+
     return this;
   }
 
   delete(value) {
-    let deletenode = this.head;
+    if (!this.head)
+    {
+      return null;
+    }
+    let deletenode = null;
     let curNode;
 
-    if (value == deletenode.value) {
-      this.head == this.head.next;
-      return deletenode;
-    }
-    while (value != deletenode.value) {
+    while (value !== deletenode) {
       curNode = deletenode;
-      deletenode = deletenode.next;
+      //  주소를 새로써서 next가 안먹는건가?
     }
     if (deletenode == null) return null;
     curNode.next = deletenode.next;
 
-    return deletenode.value;
+    return deletenode;
   }
+
+  toArray() {
+    const nodes = [];
+
+    let currentNode = this.head;
+    while (currentNode) {
+      nodes.push(currentNode);
+      currentNode = currentNode.next;
+    }
+
+    return nodes;
+  }
+
+  toString(callback) {
+    return this.toArray().map((node) => node.toString(callback)).toString();
+  }
+
 
   reverse() {
     let currNode = this.head;
