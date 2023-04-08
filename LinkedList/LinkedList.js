@@ -9,7 +9,6 @@ export default class LinkedList {
   prepend(value) {
     const newNode = new LinkedListNode(value, this.head);
 
-    // newNode.next = this.head;
     this.head = newNode;
 
     if (!this.tail) {
@@ -36,20 +35,31 @@ export default class LinkedList {
 
   delete(value) {
     if (!this.head)
-    {
       return null;
-    }
-    let deletenode = null;
-    let curNode;
+    let deleteNode = this.head
+    let beforeNode = null;
 
-    while (value !== deletenode) {
-      curNode = deletenode;
-      //  주소를 새로써서 next가 안먹는건가?
+    while (deleteNode.value !== value)
+    {
+      if (deleteNode === null)
+        return null;
+      beforeNode = deleteNode;
+      deleteNode = deleteNode.next;
     }
-    if (deletenode == null) return null;
-    curNode.next = deletenode.next;
+    if (deleteNode === this.head)
+    {
+      this.head = this.head.next;
+      return deleteNode;
+    }
 
-    return deletenode;
+    else if (deleteNode === this.tail)
+    {
+      this.tail = beforeNode;
+      return deleteNode;
+    }
+    beforeNode.next = deleteNode.next;
+
+    return deleteNode;
   }
 
   toArray() {
@@ -85,7 +95,12 @@ export default class LinkedList {
     this.head = prevNode;
   }
 
-  peek() {
-    console.log(this.head);
+  deleteHead() {
+    let deleteNode = this.head
+    if (deleteNode === null)
+      return null
+    this.head = deleteNode.next;
+
+    return deleteNode;
   }
 }
