@@ -2,23 +2,24 @@ import LinkedList from "../LinkedList/LinkedList";
 
 export default class Stack {
   constructor() {
-    this.LinkedList = new LinkedList();
+    this.linkedList = new LinkedList();
   }
   isEmpty() {
-    if (this.LinkedList.head === null) return true;
+    if (this.linkedList.head === null) return true;
     return false;
   }
   peek() {
-    if (isEmpty() === true) {
-      return false;
+    if (this.isEmpty() === true) {
+      return null;
     }
-    return this.LinkedList.head.value;
+    return this.linkedList.head.value;
   }
   push(value) {
-    this.LinkedList.append(value);
+    this.linkedList.prepend(value);
   }
   pop() {
-    this.LinkedList.deleteHead();
+    const removedHead = this.linkedList.deleteHead();
+    return removedHead ? removedHead.value : null;
   }
 
   toArray() {

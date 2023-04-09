@@ -78,29 +78,28 @@ export default class LinkedList {
     return this.toArray().map((node) => node.toString(callback)).toString();
   }
 
-
-  reverse() {
-    let currNode = this.head;
-    let prevNode = null;
-    let nextNode = null;
-
-    while (currNode) {
-      nextNode = currNode.next;
-      currNode.next = prevNode;
-
-      prevNode = currNode;
-      currNode = nextNode;
-    }
-    this.tail = head;
-    this.head = prevNode;
-  }
-
   deleteHead() {
-    let deleteNode = this.head
+    let deleteNode = this.head;
+
     if (deleteNode === null)
       return null
-    this.head = deleteNode.next;
+    this.head = this.head.next;
 
     return deleteNode;
+  }
+
+  deleteTail() {
+    let currentNode = this.head
+    let deleteNode = null;
+
+    if (currentNode === null)
+      return null
+    while (currentNode.next !== null)
+    {
+      deleteNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    this.tail = deleteNode;
+    return currentNode;
   }
 }
