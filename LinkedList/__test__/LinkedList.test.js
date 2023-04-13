@@ -50,4 +50,21 @@ describe('LinkedList', () => {
     expect(deletedNode.value).toBe(3);
     expect(linkedList.toString()).toBe('1,2,4,5');
   });
+
+  it('should delete node from linked list tail', () => {
+    const linkedList = new LinkedList();
+
+
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.append(3);
+    linkedList.append(4);
+    linkedList.append(5);
+
+    expect(linkedList.deleteTail().value).toBe(5);
+    expect(linkedList.deleteTail().value).toBe(4);
+    expect(linkedList.deleteTail().value).toBe(3);
+    expect(linkedList.deleteTail().value).toBe(2);
+    expect(linkedList.deleteTail().value).toBe(1);
+  });
 });

@@ -94,7 +94,7 @@ export default class LinkedList {
 
     if (currentNode === null)
       return null
-    while (currentNode.next !== null)
+    while (currentNode !== this.tail)
     {
       deleteNode = currentNode;
       currentNode = currentNode.next;
