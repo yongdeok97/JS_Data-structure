@@ -37,29 +37,29 @@ describe('Queue', () => {
     queue.enqueue(1);
     queue.enqueue(2);
 
-    expect(queue.peek()).toBe(1);
-    expect(queue.peek()).toBe(1);
+    expect(queue.peek()).toBe(2);
+    expect(queue.peek()).toBe(2);
   });
 
-//   it('should check if queue is empty', () => {
-//     const queue = new Queue();
+  it('should check if queue is empty', () => {
+    const queue = new Queue();
 
-//     expect(queue.isEmpty()).toBe(true);
+    expect(queue.isEmpty()).toBe(true);
 
-//     queue.enqueue(1);
+    queue.enqueue(1);
 
-//     expect(queue.isEmpty()).toBe(false);
-//   });
+    expect(queue.isEmpty()).toBe(false);
+  });
 
-//   it('should dequeue from queue in FIFO order', () => {
-//     const queue = new Queue();
+  it('should dequeue from queue in FIFO order', () => {
+    const queue = new Queue();
 
-//     queue.enqueue(1);
-//     queue.enqueue(2);
+    queue.enqueue(1);
+    queue.enqueue(2);
 
-//     expect(queue.dequeue()).toBe(1);
-//     expect(queue.dequeue()).toBe(2);
-//     expect(queue.dequeue()).toBeNull();
-//     expect(queue.isEmpty()).toBe(true);
-//   });
+    expect(queue.dequeue()).toBe(1);
+    expect(queue.dequeue()).toBe(2);
+    expect(queue.dequeue()).toBeNull();
+    expect(queue.isEmpty()).toBe(true);
+  });
 });

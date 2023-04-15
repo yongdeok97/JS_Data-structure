@@ -9,15 +9,16 @@ export default class Queue {
   }
 
   peek() {
-    return this.isEmpty() ? null : this.linkedList.head.value;
+    return this.isEmpty() ? null : this.linkedList.tail.value;
   }
 
   enqueue(value) {
-    this.linkedList.prepend(value);
+    this.linkedList.append(value);
   }
 
   dequeue() {
-    return this.linkedList.deleteTail().value;
+    const removedHead = this.linkedList.deleteHead();
+    return removedHead ? removedHead.value : null;
   }
 
   /**
